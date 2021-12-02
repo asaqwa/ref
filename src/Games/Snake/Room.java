@@ -30,6 +30,7 @@ public class Room {
     public void run() {
         //Создаем объект "наблюдатель за клавиатурой" и стартуем его.
         KeyboardObserver keyboardObserver = new KeyboardObserver();
+//        keyboardObserver.setDaemon(true);
         keyboardObserver.start();
 
         //пока змея жива
@@ -61,6 +62,7 @@ public class Room {
 
         //Выводим сообщение "Game Over"
         System.out.println("Game Over!");
+        keyboardObserver.interrupt();
     }
 
     /**
@@ -79,12 +81,12 @@ public class Room {
                 field[section.getY()][section.getX()] = snake.isAlive()? 2: 4;
                 first = false;
             }
-            field[section.getY()][section.getX()] = 1;
+            else field[section.getY()][section.getX()] = 1;
         }
         //Рисуем мышь
         field[mouse.getY()][mouse.getX()] = 3;
         //Выводим все это на экран
-        char[] pixel = new char[] {'.', 'x', 'X', '^', '*'};
+        String[] pixel = new String[] {" . ", " x ", " X ", "^_^", "RIP"};
         for (int[] ints : field) {
             for (int x = 0; x < field[0].length; x++) {
                 System.out.print(pixel[ints[x]] + " ");
