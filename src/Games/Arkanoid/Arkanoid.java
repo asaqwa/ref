@@ -1,4 +1,5 @@
 package Games.Arkanoid;
+
 import java.util.List;
 
 public class Arkanoid {
@@ -7,10 +8,15 @@ public class Arkanoid {
     private Ball ball;
     private Stand stand;
     private List<Brick> bricks;
+    static Arkanoid game;
 
     public static void main(String[] args) {
 
     }
+
+    public void run() {}
+
+    public void move() {}
 
     public Arkanoid(int width, int height) {
         this.width = width;
