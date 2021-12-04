@@ -1,4 +1,4 @@
 package Games.Arkanoid;
 
-public class Ball {
+public class Ball extends BaseObject {
 }

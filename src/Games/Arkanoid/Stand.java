@@ -1,4 +1,4 @@
 package Games.Arkanoid;
 
-public class Stand {
+public class Stand extends BaseObject {
 }
