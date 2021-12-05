@@ -1,9 +1,9 @@
 package Games.Arkanoid;
 
 public abstract class BaseObject {
-    private double x;
-    private double y;
-    private double radius;
+    protected double x;
+    protected double y;
+    protected double radius;
 
     public BaseObject(double x, double y, double radius) {
         this.x = x;
