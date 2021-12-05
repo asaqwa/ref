@@ -1,24 +1,20 @@
 package Games.Arkanoid;
 
+/**
+ * Базовый класс для всех объектов игры.
+ */
 public abstract class BaseObject {
+    //координаты
     protected double x;
     protected double y;
+    //радиус объекта
     protected double radius;
 
-    public BaseObject(double x, double y, double radius) {
+    protected BaseObject(double x, double y, double radius) {
         this.x = x;
         this.y = y;
         this.radius = radius;
     }
-
-    public boolean intersects(BaseObject o) {         // Math.hypot(x-o.x, y-o.y) works much longer
-        double distance = Math.sqrt(Math.pow((x - o.x), 2) + Math.pow((y - o.y), 2));
-        return distance <= Math.max(radius, o.radius);
-    }
-
-    public abstract void draw(Canvas canvas);
-
-    public abstract void move();
 
     public double getX() {
         return x;
@@ -42,5 +38,36 @@ public abstract class BaseObject {
 
     public void setRadius(double radius) {
         this.radius = radius;
+    }
+
+    /**
+     * Метод рисует свой объект на "канвасе".
+     */
+    abstract void draw(Canvas canvas);
+
+    /**
+     * Двигаем себя на один ход.
+     */
+    abstract void move();
+
+    /**
+     * Проверяем - не выходит ли (x,y) за границы.
+     */
+    void checkBorders(double minx, double maxx, double miny, double maxy) {
+        if (x < minx) x = minx;
+        if (x > maxx) x = maxx;
+        if (y < miny) y = miny;
+        if (y > maxy) y = maxy;
+    }
+
+    /**
+     * Проверяем - пересекаются ли переданный(o) и наш(this) объекты.
+     */
+    boolean intersects(BaseObject o) {
+        double dx = x - o.x;
+        double dy = y - o.y;
+        double destination = Math.sqrt(dx * dx + dy * dy);
+        double destination2 = Math.max(radius, o.radius);
+        return destination <= destination2;
     }
 }
