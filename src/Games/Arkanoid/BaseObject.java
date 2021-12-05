@@ -1,6 +1,6 @@
 package Games.Arkanoid;
 
-public class BaseObject {
+public abstract class BaseObject {
     private double x;
     private double y;
     private double radius;
@@ -10,6 +10,15 @@ public class BaseObject {
         this.y = y;
         this.radius = radius;
     }
+
+    public boolean intersects(BaseObject o) {         // Math.hypot(x-o.x, y-o.y) works much longer
+        double distance = Math.sqrt(Math.pow((x - o.x), 2) + Math.pow((y - o.y), 2));
+        return distance <= Math.max(radius, o.radius);
+    }
+
+    public abstract void draw(Canvas canvas);
+
+    public abstract void move();
 
     public double getX() {
         return x;
