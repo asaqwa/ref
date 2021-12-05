@@ -14,6 +14,15 @@ public class Ball extends BaseObject {
         isFrozen = true;
     }
 
+    void checkRebound(int minx, int maxx, int miny, int maxy) {}
+
+    void setDirection(double direction) {
+        this.direction = direction;
+        double angle = Math.toRadians(direction);
+        dx = Math.cos(angle) * speed;
+        dy = Math.sin(angle) * speed;
+    }
+
     void start() {
         isFrozen = false;
     }
