@@ -5,6 +5,19 @@ public class Canvas {
     private int height;
     private char[][] matrix;
 
+    void clear() {
+        matrix = new char[height+2][width+2];
+    }
+
+    void print() {
+        for (char[] chars : matrix) {
+            for (char aChar : chars) {
+                System.out.print(aChar);
+            }
+            System.out.println();
+        }
+    }
+
     void setPoint(double x, double y, char c) {
         int X = (int)Math.round(x);
         int Y = (int)Math.round(y);
