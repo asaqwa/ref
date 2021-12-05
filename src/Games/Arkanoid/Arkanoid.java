@@ -16,7 +16,16 @@ public class Arkanoid {
 
     public void run() {}
 
-    public void move() {}
+    public void move() {
+        stand.move();
+        ball.move();
+    }
+
+    void draw(Canvas canvas) {
+        for (Brick brick: bricks) brick.draw(canvas);
+        stand.draw(canvas);
+        ball.draw(canvas);
+    }
 
     public Arkanoid(int width, int height) {
         this.width = width;
